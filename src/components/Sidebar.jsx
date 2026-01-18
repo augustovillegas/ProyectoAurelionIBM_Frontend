@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Home, LayoutDashboard, BarChart3, Users, Brain, FileText, Download } from 'lucide-react';
+import { Home, LayoutDashboard, BarChart3, Users, Brain, FileText, Download, Linkedin } from 'lucide-react';
 import { cn } from '../lib/cn';
 
 const navItems = [
@@ -54,9 +54,15 @@ const Sidebar = () => {
           );
         })}
       </nav>
-      <div className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-xs text-slate-500 lg:mt-auto">
-        Diciembre 2025
-      </div>
+      <a
+        href="https://www.linkedin.com/in/augustovillegas/"
+        target="_blank"
+        rel="noreferrer"
+        className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-xs font-semibold text-slate-600 hover:bg-white lg:mt-auto"
+      >
+        <Linkedin size={14} />
+        linkedin.com/in/augustovillegas
+      </a>
     </aside>
   );
 };
