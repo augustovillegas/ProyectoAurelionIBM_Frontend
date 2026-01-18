@@ -68,6 +68,18 @@ const Conclusiones = () => {
             {churn?.accuracy_train ? formatPercent(churn.accuracy_train) : 'N/D'} vs test{' '}
             {churn?.accuracy_test ? formatPercent(churn.accuracy_test) : 'N/D'}.
           </li>
+          <li>ROC-AUC modesto en churn (0.57) requiere iteraciones adicionales.</li>
+          <li>Solapamiento entre clusters: silhouette moderado indica segmentos utiles pero no puros.</li>
+        </ul>
+      </ChartCard>
+
+      <ChartCard title="Recomendaciones tecnicas" source="DOCUMENTACION.md">
+        <ul className="space-y-2 text-sm text-slate-600">
+          <li>Churn: mantener exclusion de recency en features.</li>
+          <li>Churn: definir churn futuro (no compra en 90 dias) y calibrar threshold por precision/recall.</li>
+          <li>Customer Value: comunicar como prediccion de valor, no CLV formal.</li>
+          <li>Customer Value: cruzar con segmentos para priorizar campanas.</li>
+          <li>Clustering: integrar segmentos en CRM/BI y monitorear drift mensualmente.</li>
         </ul>
       </ChartCard>
 
@@ -76,6 +88,37 @@ const Conclusiones = () => {
           <li>Reforzar la gestion de stock en la categoria dominante.</li>
           <li>Activar campanas de retencion en clientes con alto riesgo de churn.</li>
           <li>Usar el modelo de valor para priorizar acciones comerciales.</li>
+        </ul>
+      </ChartCard>
+
+      <ChartCard title="Proximos pasos" source="DOCUMENTACION.md">
+        <ul className="space-y-2 text-sm text-slate-600">
+          <li>Automatizacion del pipeline: ETL completo y reentrenamiento automatico.</li>
+          <li>Dashboard interactivo con segmentos, churn y valor estimado.</li>
+          <li>Testing y optimizacion: A/B testing de campanas y validacion de ROI.</li>
+        </ul>
+      </ChartCard>
+
+      <ChartCard title="Trazabilidad y calidad de datos" source="DOCUMENTACION.md">
+        <ul className="space-y-2 text-sm text-slate-600">
+          <li>Integridad referencial validada.</li>
+          <li>0 nulos en campos clave y 0 duplicados en identificadores unicos.</li>
+          <li>Tipos de datos consistentes y rangos dentro de limites esperados.</li>
+        </ul>
+      </ChartCard>
+
+      <ChartCard title="Seleccion de hiperparametros" source="DOCUMENTACION.md">
+        <ul className="space-y-2 text-sm text-slate-600">
+          <li>K-Means: K=3 con elbow + silhouette, n_init=20, max_iter=500.</li>
+          <li>Random Forest: n_estimators=100, max_depth=10, min_samples_split=5.</li>
+          <li>Random Forest: min_samples_leaf=2, random_state=42.</li>
+        </ul>
+      </ChartCard>
+
+      <ChartCard title="Etica, privacidad y buenas practicas" source="DOCUMENTACION.md">
+        <ul className="space-y-2 text-sm text-slate-600">
+          <li>Datasets ML sin PII sensible (emails y nombres eliminados).</li>
+          <li>Validar resultados con datos nuevos antes de produccion.</li>
         </ul>
       </ChartCard>
 
