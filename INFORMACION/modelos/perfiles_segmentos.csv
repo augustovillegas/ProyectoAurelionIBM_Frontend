@@ -1,0 +1,4 @@
+cluster,n_ventas,importe_total_cliente,ticket_promedio,ticket_max,ticket_min,desvio_ticket,pct_importe_alimentos,pct_importe_limpieza,pct_ventas_efectivo,pct_ventas_qr,pct_ventas_tarjeta,pct_ventas_transferencia,antiguedad_cliente_dias,ventas_por_mes,lineas_promedio_por_venta,cantidad_promedio_por_venta
+0,1.16,41046.58,35932.47,36302.16,35562.79,522.81,100.0,0.0,60.53,18.42,2.63,18.42,495.68,0.07,3.97,13.34
+1,2.74,63497.11,24468.35,35499.42,13782.0,12465.64,90.22,9.78,42.72,27.63,16.32,13.33,500.05,0.17,3.0,8.61
+2,1.59,22934.03,14732.72,17787.34,11624.76,4257.37,100.0,0.0,10.34,21.26,32.76,35.63,499.03,0.1,2.32,6.34

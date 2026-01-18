@@ -1,0 +1,36 @@
+{
+  "name": "proyecto-aurelion",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@tanstack/react-table": "^8.20.5",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.468.0",
+    "papaparse": "^5.4.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-markdown": "^9.0.1",
+    "react-router-dom": "^6.26.2",
+    "recharts": "^2.12.7",
+    "remark-gfm": "^4.0.0",
+    "tailwind-merge": "^2.5.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "@vitejs/plugin-react-swc": "^3.7.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.9",
+    "prettier": "^3.3.3",
+    "vite": "^5.4.2"
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "accuracy_train": 0.9811320754716981,
+    "accuracy_test": 0.5714285714285714,
+    "roc_auc": 0.5714285714285715,
+    "optimal_threshold": 0.37901984126984123,
+    "n_clientes_alto_riesgo": 20,
+    "umbral_riesgo": 0.7
+}

@@ -1,0 +1,11 @@
+{
+    "mae_train": 3882.4987923779595,
+    "mae_test": 7552.502073412702,
+    "rmse_train": 6869.720116708124,
+    "rmse_test": 10086.193856392845,
+    "r2_train": 0.9241856078276419,
+    "r2_test": 0.6998298166188464,
+    "media_importe_total_cliente": 39573.388059701494,
+    "mediana_importe_total_cliente": 34326.0,
+    "std_importe_total_cliente": 23945.20986636153
+}

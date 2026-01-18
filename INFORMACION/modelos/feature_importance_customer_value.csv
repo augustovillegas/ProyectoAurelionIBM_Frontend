@@ -1,0 +1,16 @@
+feature,importance
+ticket_max,0.7332267909517917
+ventas_por_mes,0.12450606048229138
+n_ventas,0.03327549666115645
+desvio_ticket,0.03129274248861442
+ticket_promedio,0.015959758834781457
+antiguedad_cliente_dias,0.012080556360151871
+ticket_min,0.010153718338318803
+pct_importe_limpieza,0.008585338840555675
+pct_ventas_tarjeta,0.008474087380598705
+pct_importe_alimentos,0.00719284249594269
+lineas_promedio_por_venta,0.004844475061528458
+pct_ventas_efectivo,0.003478820868829362
+cantidad_promedio_por_venta,0.00336190949339457
+pct_ventas_qr,0.0024996170920132945
+pct_ventas_transferencia,0.0010677846500313458
