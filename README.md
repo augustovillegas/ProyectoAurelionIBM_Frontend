@@ -2,7 +2,22 @@
 
 Sitio BI + ML para el proyecto Aurelion en JavaScript puro. Los datos se cargan desde `public/INFORMACION` y se procesan en runtime.
 
-## Comandos (segun instalacion Tailwind + Vite)
+## Instalacion (segun imagen de Tailwind + Vite)
+
+```bash
+npm create vite@latest my-project
+cd my-project
+npm install
+npm install tailwindcss @tailwindcss/vite
+```
+
+Agregar el plugin en `vite.config.mjs` y cargar Tailwind en `src/index.css`:
+
+```css
+@import "tailwindcss";
+```
+
+## Comandos del proyecto
 
 ```bash
 npm install
@@ -15,6 +30,24 @@ Build:
 npm run build
 npm run preview
 ```
+
+## Datos fuente
+
+Los archivos en `public/INFORMACION/` son la unica fuente de verdad. Los principales assets:
+
+- `db/base_final_aurelion.csv`
+- `db/base_final_ML_clientes.csv`
+- `modelos/perfiles_segmentos.csv`
+- `modelos/clientes_con_clusters.csv`
+- `modelos/clientes_alto_riesgo.csv`
+- `modelos/predicciones_customer_value.csv`
+- `modelos/feature_importance_churn.csv`
+- `modelos/feature_importance_customer_value.csv`
+- `modelos/metricas_churn.json`
+- `modelos/metricas_customer_value.json`
+- `DOCUMENTACION.md`
+- `resumen_ejecutivo.pdf`
+- `Proyecto Aurelion - Power BI.pbix`
 
 ## Verificacion responsive
 

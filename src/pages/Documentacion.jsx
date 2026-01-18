@@ -13,6 +13,16 @@ const slugify = (value) =>
     .trim()
     .replace(/\s+/g, '-');
 
+const isBoxArt = (text) => /[\u2500-\u257f]/.test(text);
+
+const extractText = (value) => {
+  if (value === null || value === undefined) return '';
+  if (typeof value === 'string' || typeof value === 'number') return String(value);
+  if (Array.isArray(value)) return value.map(extractText).join('');
+  if (typeof value === 'object' && 'props' in value) return extractText(value.props?.children);
+  return '';
+};
+
 const Documentacion = () => {
   const { data, loading, error } = useData();
 
@@ -79,9 +89,17 @@ const Documentacion = () => {
                   {...props}
                 />
               ),
-              p: ({ node, ...props }) => (
-                <p className="mt-3 text-sm leading-relaxed text-slate-600" {...props} />
-              ),
+              p: ({ node, ...props }) => {
+                const raw = extractText(props.children);
+                if (isBoxArt(raw)) {
+                  return (
+                    <pre className="mt-3 max-w-full overflow-x-auto rounded-xl bg-slate-50 p-3 font-mono text-[10px] leading-[1.1] text-slate-700 sm:text-xs [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                      {raw}
+                    </pre>
+                  );
+                }
+                return <p className="mt-3 text-sm leading-relaxed text-slate-600" {...props} />;
+              },
               code: ({ node, ...props }) => (
                 <code
                   className="rounded bg-slate-100 px-1 py-0.5 text-xs text-slate-700"
