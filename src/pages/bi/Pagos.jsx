@@ -56,7 +56,7 @@ const BiPagos = () => {
                 innerRadius={60}
                 outerRadius={110}
                 labelLine={false}
-                label={({ percent }) => formatPercent(percent, 0)}
+                label={({ name, percent }) => `${name}: ${formatPercent(percent, 0)}`}
                 onClick={(dataPoint) =>
                   setFilters((prev) => ({
                     ...prev,
