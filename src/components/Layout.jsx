@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import Sidebar from './Sidebar';
 import Topbar from './Topbar';
+import ToTop from './ToTop';
 
 const Layout = ({ children }) => {
   return (
@@ -12,6 +13,7 @@ const Layout = ({ children }) => {
           <div className="mt-5 space-y-6 lg:mt-8 lg:space-y-8">{children}</div>
         </main>
       </div>
+      <ToTop />
     </div>
   );
 };
