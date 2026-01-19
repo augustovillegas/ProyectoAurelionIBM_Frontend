@@ -50,6 +50,40 @@ const BiProductos = () => {
     [],
   );
 
+  const wrapLabel = (label, maxChars = 18, maxLines = 3) => {
+    const words = String(label).split(' ');
+    const lines = [];
+    let current = '';
+    words.forEach((word) => {
+      const next = current ? `${current} ${word}` : word;
+      if (next.length <= maxChars || !current) {
+        current = next;
+      } else {
+        lines.push(current);
+        current = word;
+      }
+    });
+    if (current) lines.push(current);
+    if (lines.length > maxLines) {
+      const extra = lines.slice(maxLines - 1).join(' ');
+      return [...lines.slice(0, maxLines - 1), extra];
+    }
+    return lines;
+  };
+
+  const ProductTick = ({ x, y, payload }) => {
+    const lines = wrapLabel(payload?.value || '');
+    return (
+      <text x={x} y={y} textAnchor="end" fill="#475569" fontSize={11}>
+        {lines.map((line, index) => (
+          <tspan key={`${payload?.value}-${index}`} x={x} dy={index === 0 ? 4 : 12}>
+            {line}
+          </tspan>
+        ))}
+      </text>
+    );
+  };
+
   if (loading) return <LoadingState label="Cargando productos..." />;
   if (error || !data) return <EmptyState label={error || 'Datos no disponibles'} />;
   if (!filteredRows.length) return <EmptyState />;
@@ -62,11 +96,18 @@ const BiProductos = () => {
         actions={<DataBadge source="db/base_final_aurelion.csv" />}
       />
       <ChartCard title="Top 10 productos por facturacion" source="db/base_final_aurelion.csv">
-        <div className="h-72">
+        <div className="h-80 -mx-4 sm:mx-0">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={topTen} margin={{ left: 24 }}>
-              <XAxis dataKey="label" tick={{ fontSize: 10 }} interval={0} angle={-15} height={60} />
-              <YAxis tick={{ fontSize: 12 }} />
+            <BarChart data={topTen} layout="vertical" margin={{ left: 8, right: 32 }}>
+              <XAxis type="number" tick={{ fontSize: 12 }} />
+              <YAxis
+                type="category"
+                dataKey="label"
+                width={140}
+                tickLine={false}
+                axisLine={false}
+                tick={ProductTick}
+              />
               <Tooltip formatter={(value) => formatARS(value)} />
               <Bar dataKey="value" radius={[6, 6, 0, 0]}>
                 {topTen.map((entry, index) => (
@@ -77,9 +118,9 @@ const BiProductos = () => {
                 ))}
                 <LabelList
                   dataKey="value"
-                  position="insideTop"
+                  position="right"
                   formatter={(value) => formatARS(value)}
-                  className="fill-white text-[10px]"
+                  className="fill-slate-600 text-xs"
                 />
               </Bar>
             </BarChart>

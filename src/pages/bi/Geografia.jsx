@@ -42,7 +42,7 @@ const BiGeografia = () => {
         helper="Click en una barra para filtrar"
         source="db/base_final_aurelion.csv"
       >
-        <div className="h-80">
+        <div className="h-80 -mx-3 pl-2 sm:mx-0 sm:pl-0">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={ciudades} margin={{ left: 32 }}>
               <XAxis dataKey="label" tick={{ fontSize: 12 }} />
@@ -66,9 +66,27 @@ const BiGeografia = () => {
                 ))}
                 <LabelList
                   dataKey="value"
-                  position="insideTop"
-                  formatter={(value) => formatARS(value)}
-                  className="fill-white text-xs"
+                  content={({ x, y, width, height, value, index }) => {
+                    if (
+                      x === undefined ||
+                      y === undefined ||
+                      width === undefined ||
+                      height === undefined ||
+                      index === undefined
+                    ) {
+                      return null;
+                    }
+                    const label = String(ciudades[index]?.label || '').toLowerCase();
+                    const isRioCuarto = label === 'rio cuarto' || label === 'río cuarto';
+                    const labelX = x + width / 2;
+                    const labelY = isRioCuarto ? y + 14 : y - 6;
+                    const fill = isRioCuarto ? '#ffffff' : '#475569';
+                    return (
+                      <text x={labelX} y={labelY} textAnchor="middle" fill={fill} fontSize={12}>
+                        {formatARS(value)}
+                      </text>
+                    );
+                  }}
                 />
               </Bar>
             </BarChart>

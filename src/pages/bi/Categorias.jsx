@@ -64,9 +64,26 @@ const BiCategorias = () => {
               >
                 <LabelList
                   dataKey="value"
-                  position="insideRight"
-                  formatter={(value) => formatARS(value)}
-                  className="fill-white text-xs"
+                  content={({ x, y, width, height, value, payload }) => {
+                    if (
+                      x === undefined ||
+                      y === undefined ||
+                      width === undefined ||
+                      height === undefined
+                    ) {
+                      return null;
+                    }
+                    const isSmall = width < 48;
+                    const labelX = isSmall ? x + width + 8 : x + width - 6;
+                    const labelY = y + height / 2 + 4;
+                    const anchor = isSmall ? 'start' : 'end';
+                    const fill = isSmall ? '#475569' : '#ffffff';
+                    return (
+                      <text x={labelX} y={labelY} textAnchor={anchor} fill={fill} fontSize={12}>
+                        {formatARS(value)}
+                      </text>
+                    );
+                  }}
                 />
                 {categorias.map((entry, index) => (
                   <Cell

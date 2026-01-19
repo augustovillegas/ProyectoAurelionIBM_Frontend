@@ -53,9 +53,9 @@ const BiEstacionalidad = () => {
                 ))}
                 <LabelList
                   dataKey="value"
-                  position="insideTop"
+                  position="top"
                   formatter={(value) => formatARS(value)}
-                  className="fill-white text-xs"
+                  className="fill-slate-600 text-xs"
                 />
               </Bar>
             </BarChart>

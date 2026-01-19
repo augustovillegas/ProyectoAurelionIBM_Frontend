@@ -2,6 +2,12 @@
 
 Sitio BI + ML para el proyecto Aurelion en JavaScript puro. Los datos se cargan desde `public/INFORMACION` y se procesan en runtime.
 
+## Enfoque para recruiting
+
+- Insights clave visibles en la home: mix de medios de pago (por tickets), mix de categorias (por facturacion) y KPIs ejecutivos.
+- Controles de calidad y definiciones de metricas en el summary principal.
+- Metodologia ML resumida con metricas cargadas desde `modelos/metricas_*.json`.
+
 ## Instalacion (segun imagen de Tailwind + Vite)
 
 ```bash
@@ -48,6 +54,18 @@ Los archivos en `public/INFORMACION/` son la unica fuente de verdad. Los princip
 - `DOCUMENTACION.md`
 - `resumen_ejecutivo.pdf`
 - `Proyecto Aurelion - Power BI.pbix`
+
+## Calidad y definiciones
+
+- Normalizacion en `src/data/normalize.js` (nulos numericos a 0, defaults de texto, medio_pago Desconocido).
+- Duplicados calculados por `id_venta + id_producto`.
+- Ticket promedio = promedio del importe total por `id_venta` (consistente con BI).
+
+## Resumen ML
+
+- Dataset ML: `db/base_final_ML_clientes.csv` (67 filas, 16 variables numericas + `id_cliente` y `ciudad`).
+- Segmentacion con K-Means (K=3) y distribucion de clusters en `modelos/clientes_con_clusters.csv`.
+- Churn y customer value con Random Forest, metricas en `modelos/metricas_churn.json` y `modelos/metricas_customer_value.json`.
 
 ## Verificacion responsive
 
